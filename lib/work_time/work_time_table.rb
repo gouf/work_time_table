@@ -8,6 +8,8 @@ class DayInWorkTime
   # その日 実際に掛かる、労働に関わる時間帯を生成する
   module WorkTimeTable
     class << self
+      # 勤務開始時刻を起点に準備, 通勤, 勤務の時間を算出
+      # NOTE: フルフレックス制度を想定
       def create(preparing_hours:, base_time:, commuting_hours:, work_hours:)
         time_table = [
           # 準備時間
