@@ -14,23 +14,23 @@ class DayInWorkTime
         time_table = [
           # 準備時間
           TimePair.new(
-            base_time.advance(hours: -(preparing_hours + commuting_hours)),
-            base_time.advance(hours: -commuting_hours)
+            start: base_time.advance(hours: -(preparing_hours + commuting_hours)),
+            ending: base_time.advance(hours: -commuting_hours)
           ),
           # 通勤時間(行き)
           TimePair.new(
-            base_time.advance(hours: -commuting_hours),
-            base_time
+            start: base_time.advance(hours: -commuting_hours),
+            ending: base_time
           ),
           # 勤務時間
           TimePair.new(
-            base_time,
-            base_time.advance(hours: work_hours)
+            start: base_time,
+            ending: base_time.advance(hours: work_hours)
           ),
           # 通勤時間(帰り)
           TimePair.new(
-            base_time.advance(hours: work_hours),
-            base_time.advance(hours: work_hours + commuting_hours)
+            start: base_time.advance(hours: work_hours),
+            ending: base_time.advance(hours: work_hours + commuting_hours)
           )
         ]
 

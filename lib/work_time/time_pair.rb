@@ -16,15 +16,15 @@ class DayInWorkTime
   class TimePair
     using ::TimeFormatter
 
-    attr_reader :first, :last, :pair
+    attr_reader :start, :ending, :pair
 
     # Time 型の引数を期待
-    def initialize(first, last)
-      @first = first
-      @last = last
-      @pair = [first, last]
+    def initialize(start:, ending:)
+      @start = start
+      @end = ending
+      @pair = [start, ending]
 
-      raise Exceptions::InvalidOrderDayInWorkTimePair if first > last
+      raise Exceptions::InvalidOrderDayInWorkTimePair if start > ending
     end
 
     def to_s
